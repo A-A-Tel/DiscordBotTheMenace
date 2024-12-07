@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+shadowJar {
+    archiveBaseName.set('The')
+    archiveVersion.set("Ghost")
+}
+
+group = 'com.relaxingleg'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation("net.dv8tion:JDA:5.1.2")
+    implementation('com.google.code.gson:gson:2.10.1')
+}
+
+test {
+    useJUnitPlatform()
+}
