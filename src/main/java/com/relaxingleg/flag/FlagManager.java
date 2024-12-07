@@ -28,7 +28,7 @@ public class FlagManager {
         if (file.exists()) {
 
             Helper helper = new Helper();
-            Type type = new TypeToken<ArrayList<String>>() {
+            Type type = new TypeToken<ArrayList<Boolean>>() {
             }.getType();
 
             flags = helper.readListFromJson(fileName, type);

@@ -1,10 +1,7 @@
 package com.relaxingleg;
 
 import com.relaxingleg.command.CommandManager;
-import com.relaxingleg.command.commands.DirectFlags;
-import com.relaxingleg.command.commands.GetLevel;
-import com.relaxingleg.command.commands.KillBot;
-import com.relaxingleg.command.commands.ResetFlags;
+import com.relaxingleg.command.commands.*;
 import com.relaxingleg.filter.FilterManager;
 import com.relaxingleg.flag.FlagManager;
 import com.relaxingleg.level.LevelManager;
@@ -51,6 +48,7 @@ public class Main extends ListenerAdapter {
         command.add(new KillBot());
         command.add(new DirectFlags());
         command.add(new ResetFlags());
+        command.add(new BannedWords());
         command.loadCommandsAll(event);
 
         level.loadUsers();
@@ -74,6 +72,11 @@ public class Main extends ListenerAdapter {
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
 
-        level.setLevelStatus(event.getJDA().getUserById(event.getAuthor().getIdLong()), event.getChannel());
+        if (FlagManager.flags.getFirst() && filter.filterMessage(event.getMessage())) {
+            return;
+        }
+        if (FlagManager.flags.get(1)) {
+            level.setLevelStatus(event.getJDA().getUserById(event.getAuthor().getIdLong()), event.getChannel());
+        }
     }
 }

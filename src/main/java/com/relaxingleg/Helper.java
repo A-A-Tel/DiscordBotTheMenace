@@ -2,6 +2,8 @@ package com.relaxingleg;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Helper {
+    private static final Logger log = LoggerFactory.getLogger(Helper.class);
+
     public void delay(long milliseconds) {
         long awaitingTime = System.currentTimeMillis();
 
@@ -21,7 +25,9 @@ public class Helper {
         try (FileWriter writer = new FileWriter(name)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(list, writer);
-        } catch (IOException _) {}
+        } catch (IOException e) {
+            log.error("e: ", e);
+        }
     }
 
     public ArrayList readListFromJson(String name, Type type) {
