@@ -26,7 +26,7 @@ public class Main extends ListenerAdapter {
             .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT)
             .addEventListeners(new Main()).build();
 
-    public static void main(String[] args) {
+    public static void main(String[] ignoredArgs) {
         System.out.println("Loading bot...");
     }
 
