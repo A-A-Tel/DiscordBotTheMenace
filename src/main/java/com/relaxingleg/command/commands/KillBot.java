@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
-import java.io.FileWriter;
 import java.util.List;
 
 public class KillBot implements ICommand {
