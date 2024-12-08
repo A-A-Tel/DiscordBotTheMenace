@@ -31,9 +31,7 @@ public class KillBot implements ICommand {
 
     @Override
     public void execute(SlashCommandInteractionEvent event) {
-
-        Helper helper = new Helper();
-
+        
         event.reply("Goodbye").queue();
         System.exit(0);
     }
