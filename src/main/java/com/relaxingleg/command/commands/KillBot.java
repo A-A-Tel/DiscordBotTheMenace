@@ -34,10 +34,7 @@ public class KillBot implements ICommand {
 
         Helper helper = new Helper();
 
-        event.reply("Goodbyeeeeee!").queue();
-        helper.delay(2000);
-        event.getChannel().sendMessage("e").queue();
-        helper.delay(5000);
+        event.reply("Goodbye").queue();
         System.exit(0);
     }
 }
