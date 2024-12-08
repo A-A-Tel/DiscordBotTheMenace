@@ -15,10 +15,12 @@ import java.util.List;
 public class Helper {
     private static final Logger log = LoggerFactory.getLogger(Helper.class);
 
-    public void delay(long milliseconds) {
-        long awaitingTime = System.currentTimeMillis();
-
-        while(System.currentTimeMillis() < awaitingTime) { int i = 1+1; }
+    public void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException _) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public void saveListToJson(String name, List list) {
