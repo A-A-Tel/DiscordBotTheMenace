@@ -18,7 +18,7 @@ public class Helper {
     public void delay(long milliseconds) {
         long awaitingTime = System.currentTimeMillis();
 
-        while(System.currentTimeMillis() < awaitingTime);
+        while(System.currentTimeMillis() < awaitingTime) { int i = 1+1; }
     }
 
     public void saveListToJson(String name, List list) {
