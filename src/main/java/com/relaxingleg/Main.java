@@ -49,6 +49,7 @@ public class Main extends ListenerAdapter {
         command.add(new DirectFlags());
         command.add(new ResetFlags());
         command.add(new BannedWords());
+        command.add(new Pookie());
         command.loadCommandsAll(event);
 
         level.loadUsers();
@@ -71,6 +72,8 @@ public class Main extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+
+        if (!event.isFromGuild()) return;
 
         if (FlagManager.flags.getFirst() && filter.filterMessage(event.getMessage())) {
             return;
