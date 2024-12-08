@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageUpdateEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -83,5 +84,16 @@ public class Main extends ListenerAdapter {
         if (FlagManager.flags.get(1)) {
             level.setLevelStatus(event.getJDA().getUserById(event.getAuthor().getIdLong()), event.getChannel());
         }
+    }
+
+    @Override
+    public void onMessageUpdate(@NotNull MessageUpdateEvent event) {
+
+        if (!event.isFromGuild()) return;
+
+        if (FlagManager.flags.getFirst()) {
+            filter.filterMessage(event.getMessage());
+        }
+
     }
 }
