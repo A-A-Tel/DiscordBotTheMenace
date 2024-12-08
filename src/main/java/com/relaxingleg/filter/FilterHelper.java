@@ -3,7 +3,6 @@ package com.relaxingleg.filter;
 import com.vdurmont.emoji.EmojiParser;
 import com.vdurmont.emoji.EmojiManager;
 
-import java.net.FileNameMap;
 import java.util.Map;
 
 public class FilterHelper {

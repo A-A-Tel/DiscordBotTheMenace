@@ -44,3 +44,4 @@ bin/
 ### JDA ###
 *.json
 src/main/java/com/relaxingleg/Token.java
+/.idea
