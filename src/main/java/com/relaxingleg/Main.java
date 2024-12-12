@@ -55,7 +55,7 @@ public class Main extends ListenerAdapter {
 
         level.loadUsers();
         flag.loadFlags();
-        filter.loadBannedWords();
+        filter.loadFilter();
 
         System.out.println("Finished Loading");
     }
