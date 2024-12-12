@@ -25,7 +25,7 @@ public class WhitelistPeople implements ICommand {
     public List<OptionData> getOptions() {
         return List.of(
                 new OptionData(OptionType.USER, "user", "Specify which user", false),
-                new OptionData(OptionType.BOOLEAN, "remove", "set to true to remove, default is add", false)
+                new OptionData(OptionType.BOOLEAN, "remove", "Set to true to remove, default is add", false)
         );
     }
 
@@ -55,17 +55,16 @@ public class WhitelistPeople implements ICommand {
             builder.append("]");
             reply = builder.toString();
 
-        } else if (optionRemove == null || optionRemove.getAsBoolean()) {
+        } else if (optionRemove == null || !optionRemove.getAsBoolean()) {
 
             filter.addWhitelistedUser(optionUser.getAsUser().getIdLong());
             reply = "Added user: " + optionUser.getAsMentionable();
-
         } else if (filter.removeWhitelistedUser(optionUser.getAsUser().getIdLong())) {
 
             reply = "Removed user: " + optionUser.getAsMentionable();
         } else {
 
-            reply = "List did not contain: " + optionUser.getAsMentionable();
+            reply = "List didn't" + optionUser.getAsMentionable();
         }
         event.reply(reply).queue();
     }
