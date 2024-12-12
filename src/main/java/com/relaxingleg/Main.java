@@ -51,6 +51,7 @@ public class Main extends ListenerAdapter {
         command.add(new ResetFlags());
         command.add(new BannedWords());
         command.add(new Pookie());
+        command.add(new WhitelistPeople());
         command.loadCommandsAll(event);
 
         level.loadUsers();
