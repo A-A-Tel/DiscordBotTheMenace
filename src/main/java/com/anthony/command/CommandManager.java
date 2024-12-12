@@ -1,4 +1,4 @@
-package com.relaxingleg.command;
+package com.anthony.command;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

@@ -1,4 +1,4 @@
-package com.relaxingleg.filter;
+package com.anthony.filter;
 
 import com.vdurmont.emoji.EmojiParser;
 import com.vdurmont.emoji.EmojiManager;

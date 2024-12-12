@@ -1,7 +1,7 @@
-package com.relaxingleg.command.commands;
+package com.anthony.command.commands;
 
-import com.relaxingleg.command.ICommand;
-import com.relaxingleg.filter.FilterManager;
+import com.anthony.command.ICommand;
+import com.anthony.filter.FilterManager;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
@@ -18,13 +18,13 @@ public class WhitelistPeople implements ICommand {
 
     @Override
     public String getDescription() {
-        return "Give users a bypass to the chat filter";
+        return "Give users a bypass to the chat filter/view users";
     }
 
     @Override
     public List<OptionData> getOptions() {
         return List.of(
-                new OptionData(OptionType.USER, "user", "Specify which user", true),
+                new OptionData(OptionType.USER, "user", "Specify which user", false),
                 new OptionData(OptionType.BOOLEAN, "remove", "set to true to remove, default is add", false)
         );
     }
@@ -42,24 +42,31 @@ public class WhitelistPeople implements ICommand {
         OptionMapping optionUser = event.getOption("user");
         OptionMapping optionRemove = event.getOption("remove");
 
-        String reply = "Failure";
+        String reply;
 
         if (optionUser == null) {
-            event.reply(reply);
-            return;
-        }
+            StringBuilder builder = new StringBuilder("[");
 
-        if (optionRemove == null || optionRemove.getAsBoolean()) {
+            for (long id : FilterManager.whitelistedUsers) {
+                builder.append("<@").append(id).append(">, ");
+            }
 
-            filter.addWhitelistedUser(optionUser.getAsUser());
+            builder.delete(builder.length() - 2, builder.length());
+            builder.append("]");
+            reply = builder.toString();
+
+        } else if (optionRemove == null || optionRemove.getAsBoolean()) {
+
+            filter.addWhitelistedUser(optionUser.getAsUser().getIdLong());
             reply = "Added user: " + optionUser.getAsMentionable();
-        } else if (filter.removeWhitelistedUser(optionUser.getAsUser())) {
+
+        } else if (filter.removeWhitelistedUser(optionUser.getAsUser().getIdLong())) {
 
             reply = "Removed user: " + optionUser.getAsMentionable();
         } else {
 
             reply = "List did not contain: " + optionUser.getAsMentionable();
         }
-        event.reply(reply);
+        event.reply(reply).queue();
     }
 }

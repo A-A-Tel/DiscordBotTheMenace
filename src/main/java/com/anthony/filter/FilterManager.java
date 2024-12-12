@@ -1,9 +1,8 @@
-package com.relaxingleg.filter;
+package com.anthony.filter;
 
 import com.google.gson.reflect.TypeToken;
-import com.relaxingleg.Helper;
+import com.anthony.Helper;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.User;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 public class FilterManager {
 
     public static ArrayList<String> bannedWords;
-    public static ArrayList<User> whitelistedUsers;
+    public static ArrayList<Long> whitelistedUsers;
 
     private final String bannedFileName = "bannedWords.json";
     private final String whitelistFileName = "whitelistedUsers.json";
@@ -33,7 +32,7 @@ public class FilterManager {
 
         if (file.exists()) {
             Helper helper = new Helper();
-            Type type = new TypeToken<ArrayList<User>>() {}.getType();
+            Type type = new TypeToken<ArrayList<Long>>() {}.getType();
 
             whitelistedUsers = helper.readListFromJson(whitelistFileName, type);
         } else {
@@ -57,17 +56,17 @@ public class FilterManager {
         return success;
     }
 
-    public void addWhitelistedUser(User user) {
+    public void addWhitelistedUser(Long id) {
         Helper helper = new Helper();
 
-        whitelistedUsers.add(user);
+        whitelistedUsers.add(id);
         helper.saveListToJson(whitelistFileName, whitelistedUsers);
     }
 
-    public boolean removeWhitelistedUser(User user) {
+    public boolean removeWhitelistedUser(Long id) {
         Helper helper = new Helper();
 
-        boolean success = whitelistedUsers.remove(user);
+        boolean success = whitelistedUsers.remove(id);
 
         helper.saveListToJson(whitelistFileName, whitelistedUsers);
         return success;
@@ -79,9 +78,9 @@ public class FilterManager {
             return false;
         }
 
-        for (User user : whitelistedUsers) {
+        for (long id : whitelistedUsers) {
 
-            if (user.equals(message.getAuthor())) {
+            if (id == message.getAuthor().getIdLong()) {
                 return false;
             }
         }

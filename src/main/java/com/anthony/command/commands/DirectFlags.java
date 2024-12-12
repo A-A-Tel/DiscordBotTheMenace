@@ -1,7 +1,7 @@
-package com.relaxingleg.command.commands;
+package com.anthony.command.commands;
 
-import com.relaxingleg.command.ICommand;
-import com.relaxingleg.flag.FlagManager;
+import com.anthony.command.ICommand;
+import com.anthony.flag.FlagManager;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;

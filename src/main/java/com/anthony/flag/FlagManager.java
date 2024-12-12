@@ -1,7 +1,7 @@
-package com.relaxingleg.flag;
+package com.anthony.flag;
 
 import com.google.gson.reflect.TypeToken;
-import com.relaxingleg.Helper;
+import com.anthony.Helper;
 
 import java.io.File;
 import java.lang.reflect.Type;

@@ -1,8 +1,8 @@
-package com.relaxingleg.command.commands;
+package com.anthony.command.commands;
 
-import com.relaxingleg.command.ICommand;
-import com.relaxingleg.level.LevelManager;
-import com.relaxingleg.level.LeveledUser;
+import com.anthony.command.ICommand;
+import com.anthony.level.LevelManager;
+import com.anthony.level.LeveledUser;
 
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

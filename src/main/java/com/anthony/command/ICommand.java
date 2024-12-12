@@ -1,4 +1,4 @@
-package com.relaxingleg.command;
+package com.anthony.command;
 
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;

@@ -1,4 +1,4 @@
-package com.relaxingleg.level;
+package com.anthony.level;
 
 public class LeveledUser {
     private long id;

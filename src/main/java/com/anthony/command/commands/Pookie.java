@@ -1,7 +1,6 @@
-package com.relaxingleg.command.commands;
+package com.anthony.command.commands;
 
-import com.relaxingleg.command.ICommand;
-import net.dv8tion.jda.api.entities.channel.attribute.ICategorizableChannel;
+import com.anthony.command.ICommand;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;

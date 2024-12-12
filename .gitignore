@@ -43,5 +43,5 @@ bin/
 
 ### JDA ###
 *.json
-src/main/java/com/relaxingleg/Token.java
 /.idea
+src/main/java/com/anthony/Token.java

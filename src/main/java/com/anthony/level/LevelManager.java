@@ -1,14 +1,11 @@
-package com.relaxingleg.level;
+package com.anthony.level;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.relaxingleg.Helper;
+import com.anthony.Helper;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 

@@ -1,10 +1,10 @@
-package com.relaxingleg;
+package com.anthony;
 
-import com.relaxingleg.command.CommandManager;
-import com.relaxingleg.command.commands.*;
-import com.relaxingleg.filter.FilterManager;
-import com.relaxingleg.flag.FlagManager;
-import com.relaxingleg.level.LevelManager;
+import com.anthony.command.CommandManager;
+import com.anthony.command.commands.*;
+import com.anthony.filter.FilterManager;
+import com.anthony.flag.FlagManager;
+import com.anthony.level.LevelManager;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
