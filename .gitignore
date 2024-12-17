@@ -41,3 +41,5 @@ bin/
 ### JDA ###
 *.json
 src/main/java/com/anthony/Token.java
+/server/.venv/
+run.bat
