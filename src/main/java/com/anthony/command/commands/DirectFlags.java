@@ -28,7 +28,7 @@ public class DirectFlags implements ICommand {
     }
 
     @Override
-    public DefaultMemberPermissions permission() {
+    public DefaultMemberPermissions getPermission() {
         return DefaultMemberPermissions.DISABLED;
     }
 

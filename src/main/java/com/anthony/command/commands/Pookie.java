@@ -26,7 +26,7 @@ public class Pookie implements ICommand {
     }
 
     @Override
-    public DefaultMemberPermissions permission() {
+    public DefaultMemberPermissions getPermission() {
         return DefaultMemberPermissions.ENABLED;
     }
 

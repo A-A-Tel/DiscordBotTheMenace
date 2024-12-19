@@ -25,7 +25,7 @@ public class ResetFlags implements ICommand {
     }
 
     @Override
-    public DefaultMemberPermissions permission() {
+    public DefaultMemberPermissions getPermission() {
         return DefaultMemberPermissions.DISABLED;
     }
 

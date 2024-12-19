@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +44,18 @@ public class Helper {
         } catch (IOException _) {}
 
         return null;
+    }
+
+    public long calculateTimeUntil(LocalTime time) {
+
+        LocalTime now = LocalTime.now();
+
+        if (now.isAfter(time)) {
+            time = time.plusHours(24);
+        }
+
+        Duration duration = Duration.between(now, time);
+
+        return duration.toMillis();
     }
 }

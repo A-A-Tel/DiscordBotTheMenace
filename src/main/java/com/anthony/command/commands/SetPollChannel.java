@@ -1,27 +1,31 @@
 package com.anthony.command.commands;
 
-import com.anthony.Helper;
 import com.anthony.command.ICommand;
+import com.anthony.poll.PollManager;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 import java.util.List;
 
-public class KillBot implements ICommand {
+public class SetPollChannel implements ICommand {
     @Override
     public String getName() {
-        return "kill";
+        return "set-poll-channel";
     }
 
     @Override
     public String getDescription() {
-        return "Kills the bot";
+        return "Set the automated poll channel";
     }
 
     @Override
     public List<OptionData> getOptions() {
-        return List.of();
+        return List.of(
+                new OptionData(OptionType.CHANNEL, "channel", "specify which channel", true)
+        );
     }
 
     @Override
@@ -31,11 +35,10 @@ public class KillBot implements ICommand {
 
     @Override
     public void execute(SlashCommandInteractionEvent event) {
+        MessageChannel channel = event.getOption("channel").getAsChannel().asGuildMessageChannel();
 
-        Helper helper = new Helper();
-
-        event.reply("Goodbye").queue();
-        helper.delay(2500);
-        System.exit(0);
+        PollManager poll = new PollManager();
+        poll.setChannel(channel, event.getGuild());
+        event.reply("Success!");
     }
 }

@@ -1,8 +1,12 @@
+# Run this script from the terminal from this directory!!!
+
 import os
 import subprocess
 
+
 def run_command(command):
-     subprocess.run(command)
+    subprocess.run(command)
+
 
 os.chdir("../")
 while True:
@@ -14,4 +18,4 @@ while True:
         run_command(["chmod", "+x", "./gradlew"])
         run_command(["./gradlew", "shadowJar"])
 
-    run_command(["java", "-jar", "./build/libs/the-menace-all.jar"])
+    run_command(["java", "--add-opens", "java.base/java.time=ALL-UNNAMED", "-jar", "./build/libs/the-menace-all.jar"])

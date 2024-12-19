@@ -30,7 +30,7 @@ public class WhitelistPeople implements ICommand {
     }
 
     @Override
-    public DefaultMemberPermissions permission() {
+    public DefaultMemberPermissions getPermission() {
         return DefaultMemberPermissions.DISABLED;
     }
 
@@ -64,7 +64,7 @@ public class WhitelistPeople implements ICommand {
             reply = "Removed user: " + optionUser.getAsMentionable();
         } else {
 
-            reply = "List didn't" + optionUser.getAsMentionable();
+            reply = "List didn't contain" + optionUser.getAsMentionable();
         }
         event.reply(reply).queue();
     }

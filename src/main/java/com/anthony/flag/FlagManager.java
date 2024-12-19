@@ -33,7 +33,7 @@ public class FlagManager {
 
             flags = helper.readListFromJson(fileName, type);
         } else {
-            flags = Arrays.asList(false, true);
+            flags = Arrays.asList(false, true, false);
         }
     }
 

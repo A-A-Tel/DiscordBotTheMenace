@@ -6,6 +6,7 @@ import com.anthony.filter.FilterManager;
 import com.anthony.flag.FlagManager;
 import com.anthony.level.LevelManager;
 
+import com.anthony.poll.PollManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -24,7 +25,11 @@ public class Main extends ListenerAdapter {
 
     public static JDA jda = JDABuilder.createDefault(Token.BOT)
             .setMemberCachePolicy(MemberCachePolicy.ALL)
-            .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT)
+            .enableIntents(
+                    GatewayIntent.GUILD_MEMBERS,
+                    GatewayIntent.MESSAGE_CONTENT,
+                    GatewayIntent.GUILD_MESSAGE_POLLS
+            )
             .addEventListeners(new Main()).build();
 
     public static void main(String[] ignoredArgs) {
@@ -37,6 +42,7 @@ public class Main extends ListenerAdapter {
     private final CommandManager command = new CommandManager();
     private final FlagManager flag = new FlagManager();
     private final FilterManager filter = new FilterManager();
+    private final PollManager poll = new PollManager();
 
     @Override
     public void onReady(@NotNull ReadyEvent event) {
@@ -52,11 +58,13 @@ public class Main extends ListenerAdapter {
         command.add(new BannedWords());
         command.add(new Pookie());
         command.add(new WhitelistPeople());
+        command.add(new SetPollChannel());
         command.loadCommandsAll(event);
 
         level.loadUsers();
         flag.loadFlags();
         filter.loadFilter();
+        poll.loadPoll();
 
         System.out.println("Finished Loading");
     }

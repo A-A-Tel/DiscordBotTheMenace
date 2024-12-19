@@ -31,7 +31,7 @@ public class GetLevel implements ICommand {
     }
 
     @Override
-    public DefaultMemberPermissions permission() {
+    public DefaultMemberPermissions getPermission() {
         return DefaultMemberPermissions.ENABLED;
     }
 
